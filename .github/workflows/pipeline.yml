@@ -55,7 +55,7 @@ jobs:
         if: ${{ success() }}
         with:
           severity: info
-          description: Successfully deployed to https://full-stack-open-pokedex-yg.fly.dev/
+          description: Successfully deployed to ${{ secrets.PROD_URL }}
           details: Deployment Succeeded!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Failure Notification
