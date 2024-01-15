@@ -67,6 +67,7 @@ jobs:
           details: Deployment failed!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}    
   tag_release:
+    if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip' ) }}
     needs: [before_deploy]
     runs-on: ubuntu-20.04
     steps:
@@ -74,7 +75,6 @@ jobs:
         with:
           fetch-depth: '0'
       - name: Bump version and push tag
-        if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip' ) }}
         uses: anothrNick/github-tag-action@1.64.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
