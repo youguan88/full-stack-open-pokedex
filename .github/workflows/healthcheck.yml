@@ -1,9 +1,8 @@
 name: Periodic health check pipeline
 
 on:
-    push:
-      branches:
-        - master
+    schedule:
+    -  cron: '25 13 * * *'
 jobs:
     url_health_check:
         runs-on: ubuntu-20.04
