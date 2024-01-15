@@ -2,7 +2,7 @@ name: Periodic health check pipeline
 
 on:
     schedule:
-    -  cron: '25 13 * * *'
+    -  cron: '40 13 * * *'
 jobs:
     url_health_check:
         runs-on: ubuntu-20.04
